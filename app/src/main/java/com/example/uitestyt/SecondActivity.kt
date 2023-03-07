@@ -10,10 +10,10 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivitySecondBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_second)
+        setContentView(binding.root)
 
-        binding.button.setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
+        binding.btnSecondActivity.setOnClickListener{
+            onBackPressed()
         }
     }
 }
