@@ -1,6 +1,7 @@
 package com.example.uitestyt
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
@@ -31,13 +32,22 @@ class MainActivityTest{
 
     }
     @Test// проверка на соотвествие текста
-    fun testTeztIsMainActivity (){
+    fun testTestIsMainActivity (){
         onView(withId(R.id.tvMainActivity))
             .check(
                 matches
                 (withText(
                 R.string.main_activity
             )))
+
+    }
+    @Test// переход на вторую активити
+    fun clickTestOnMainButton(){
+        onView(withId(R.id.btnMainActivity))
+            .perform((click()))
+
+        onView(withId(R.id.second_activity_view))
+            .check(matches(isDisplayed()))
 
     }
 }
