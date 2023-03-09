@@ -1,5 +1,6 @@
 package com.example.uitestyt
 
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -48,6 +49,21 @@ class MainActivityTest{
 
         onView(withId(R.id.second_activity_view))
             .check(matches(isDisplayed()))
+
+    }
+
+    @Test// возвращение на основную активити
+    fun backPressToMainActivity(){
+        onView(withId(R.id.btnMainActivity))
+            .perform((click()))
+
+        onView(withId(R.id.second_activity_view))
+            .check(matches(isDisplayed()))
+
+        Espresso.pressBack()
+            onView((withId(R.id.layout_mainActivity)))
+                .check(matches(isDisplayed()))
+
 
     }
 }
