@@ -2,8 +2,7 @@ package com.example.uitestyt
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Rule
@@ -22,9 +21,23 @@ class MainActivityTest{
             .check(matches(isDisplayed()))
     }
 
-    @Test//  проверка текста на Main Activity
+    @Test//  проверка наличия текста и кнопки  на Main Activity
     fun checkingTextVisibility(){
         onView(withId(R.id.tvMainActivity))
             .check(matches(isDisplayed()))
+
+        onView(withId((R.id.btnMainActivity)))
+            .check(matches(isDisplayed()))
+
+    }
+    @Test// проверка на соотвествие текста
+    fun testTeztIsMainActivity (){
+        onView(withId(R.id.tvMainActivity))
+            .check(
+                matches
+                (withText(
+                R.string.main_activity
+            )))
+
     }
 }
