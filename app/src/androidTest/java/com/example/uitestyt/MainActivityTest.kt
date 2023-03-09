@@ -16,9 +16,15 @@ class MainActivityTest{
     @get:Rule
     var activityScenarioRule= activityScenarioRule<MainActivity>()
 
-    @Test
+    @Test//тест на проверку открытия Main Activity
     fun checkActivityVisibility(){
         onView(withId(R.id.layout_mainActivity))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test//  проверка текста на Main Activity
+    fun checkingTextVisibility(){
+        onView(withId(R.id.tvMainActivity))
             .check(matches(isDisplayed()))
     }
 }
